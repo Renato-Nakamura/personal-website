@@ -1,14 +1,20 @@
+//https://bowpixel.itch.io/cat-50-animations
+
 <template>
-  <canvas
-    ref="canvas"
-    class="h-screen h-100"
-    style="
-      image-rendering: -moz-crisp-edges;
-      image-rendering: -webkit-crisp-edges;
-      image-rendering: pixelated;
-    "
-    @mousemove="followMouse"
-  ></canvas>
+  <div class="h-screen h-100 d-flex flex-column justify-space-around">
+    <span>Renato Nakamura</span>
+    <canvas
+      ref="canvas"
+      class="h-screen h-100"
+      style="
+        position: absolute;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: pixelated;
+      "
+      @mousemove="followMouse"
+    ></canvas>
+  </div>
 </template>
 //https://codepen.io/ecemgo/details/KKbvGvg
 //https://codepen.io/MiMiWilson/details/MWzOWdp
@@ -22,8 +28,8 @@ import catWalkingLeft from "../assets/images/catWalkingLeft.png";
 const canvas = ref(null);
 const ACCELERATION = 0.2;
 const GRAVITY = 0.5;
-const CANVAS_SCALE = 10;
-let c, cat, canvasWidth, canvasHeight, img;
+const CANVAS_SCALE = 4;
+let c, cat, canvasWidth, canvasHeight;
 
 class Cat {
   constructor() {
@@ -76,7 +82,7 @@ class Cat {
 
     this.position.y += this.velocity.y;
     this.position.x += this.velocity.x;
-    if (this.focus.x > this.position.x + 10) {
+    if (this.focus.x > this.position.x + 40) {
       cat.animation = "walkingRight";
       if (this.focus.x - this.position.x > this.difference / 2) {
         this.velocity.x += ACCELERATION;
@@ -113,6 +119,9 @@ class Cat {
 function createImage(catImage) {
   const imagem = new Image();
   imagem.src = catImage;
+  imagem.onload = () => {
+    c.imageSmoothingEnabled = false;
+  };
   return imagem;
 }
 
@@ -129,7 +138,6 @@ onMounted(() => {
   });
   canvasWidth = canvas.value.width;
   canvasHeight = canvas.value.height;
-  console.log({ canvasHeight });
   cat = new Cat();
   animate();
 });
