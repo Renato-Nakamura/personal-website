@@ -46,7 +46,7 @@
           >
             <a
               href="#contact"
-              class="transition-colors px-4 py-1 inline-block bg-blue-200 shadow-blue-300/20 shadow-lg hover:bg-blue-300 rounded-sm border border-blue-400" 
+              class="transition-colors px-4 py-1 inline-block bg-blue-200 shadow-blue-300/20 shadow-lg hover:bg-blue-300 rounded-sm border border-blue-400"
               >Let's talk</a
             >
           </div>
@@ -78,7 +78,7 @@ import catWalkingLeft from "../assets/images/catWalkingLeft.png";
 const canvas = ref(null);
 const ACCELERATION = 0.2;
 const GRAVITY = 0.5;
-const CANVAS_SCALE = 7;
+const CANVAS_SCALE = 4;
 let c, cat;
 
 class Cat {
@@ -173,7 +173,7 @@ class Cat {
   }
 
   update() {
-    if(canvas.value == null) return 
+    if (canvas.value == null) return;
     this.draw();
     this.setFrame();
     this.moveCat();
@@ -198,20 +198,21 @@ function initCat() {
   c = canvas.value.getContext("2d");
   setCanvasSize();
 
-  addEventListener("resize", setCanvasSize);
+  addEventListener("resize",()=> setCanvasSize(true));
+  addEventListener("orientationchange",()=> setCanvasSize());
   cat = new Cat();
   animate();
 }
 
-function setCanvasSize() {
+function setCanvasSize(onlyWidth) {
   canvas.value.width = innerWidth / CANVAS_SCALE;
-  canvas.value.height = innerHeight / CANVAS_SCALE;
+  if (!onlyWidth) canvas.value.height = innerHeight / CANVAS_SCALE;
 }
 
 function animate() {
   setTimeout(() => {
     requestAnimationFrame(animate);
-    if(canvas.value == null) return 
+    if (canvas.value == null) return;
     c.clearRect(0, 0, canvas.value.width, canvas.value.height);
     cat.update();
   }, 20);
