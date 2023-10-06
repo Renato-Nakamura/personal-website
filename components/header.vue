@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     :elevation="0"
-    class="bg-deep-purple-darken-4"
+    class="!bg-gray-900 !text-gray-400"
     scroll-behavior="hide"
     con="mdi-menu"
   >
