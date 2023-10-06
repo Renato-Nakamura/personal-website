@@ -1,16 +1,16 @@
 //https://bowpixel.itch.io/cat-50-animations
 <template>
-    <canvas
-      ref="canvas"
-      style="
-        z-index: 10;
-        position: absolute;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: -webkit-crisp-edges;
-        image-rendering: pixelated;
-      "
-      @click="followMouse"
-    ></canvas>
+  <canvas
+    ref="canvas"
+    style="
+      z-index: 10;
+      position: absolute;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-crisp-edges;
+      image-rendering: pixelated;
+    "
+    @click="followMouse"
+  ></canvas>
 </template>
 
 <script setup>
@@ -141,8 +141,8 @@ function initCat() {
   c = canvas.value.getContext("2d");
   setCanvasSize();
 
-  addEventListener("resize",()=> setCanvasSize(true));
-  addEventListener("orientationchange",()=> setCanvasSize());
+  addEventListener("resize", () => setCanvasSize(true));
+  addEventListener("orientationchange", () => setCanvasSize());
   cat = new Cat();
   animate();
 }
@@ -162,6 +162,7 @@ function animate() {
 }
 
 function followMouse(e) {
+  if (e.clientY < innerHeight / 2) cat.velocity.y = -5;
   cat.focus.x = e.clientX / CANVAS_SCALE;
   cat.focus.y = e.clientY / CANVAS_SCALE;
   cat.difference = e.clientX / CANVAS_SCALE - cat.position.x;
