@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@invictus.codes/nuxt-vuetify": "^0.3.0",
+    "@nuxtjs/google-fonts": "^3.0.2",
     "aos": "^2.3.4"
   }
 }
