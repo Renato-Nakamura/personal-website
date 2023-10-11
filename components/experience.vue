@@ -74,7 +74,7 @@
     <div
       data-aos="slide-up"
       data-aos-offset="200"
-      class="hidden lg:block shadow-xl absolute left-1/2 bottom-0 w-4 h-28 bg-gray-400 dark:bg-gray-300"
+      class=" lg:block shadow-xl absolute left-1/2 bottom-0 w-4 h-28 bg-gray-400 dark:bg-gray-300"
     />
   </section>
 </template>
