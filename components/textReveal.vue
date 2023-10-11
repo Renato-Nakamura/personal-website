@@ -1,8 +1,8 @@
 <template>
-  <div class="relative inline-block reveal">
+  <div ref="textReveal" class="relative inline-block">
     <ClientOnly>
-      <p id="text" class="opacity-0 " style="animation-delay: {delay}ms">
-        <slot/>
+      <p id="text" class="opacity-0" style="animation-delay: {delay}ms">
+        <slot />
       </p>
     </ClientOnly>
     <div class="absolute overflow-hidden pointer-events-none inset-0">
@@ -15,12 +15,22 @@
   </div>
 </template>
 
-<script>
-let text = ref("aaaaa");
+<script setup>
 let delay = ref(200);
-  
-let textReveal; 
 
+let textReveal;
+let once = false;
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      console.log(entry, i);
+      if (once) {
+        if (entry.isIntersecting) entry.target.classList.add("reveal");
+      } else entry.target.classList.toggle("reveal", entry.isIntersecting);
+    });
+  });
+  observer.observe(textReveal);
+});
 </script>
 
 <style>

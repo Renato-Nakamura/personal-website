@@ -3,13 +3,26 @@
 @tailwind utilities;
 
 @keyframes gradient-animation-y {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    width: 0% ;
+  }
+  100% {
+    width: 45%;
+  }
+}
+
+.slide {
+    animation: slide 500ms  ease-in-out forwards;
   }

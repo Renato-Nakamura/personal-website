@@ -7,6 +7,8 @@
       <Welcome />
       <About />
       <Experience />
+      <Projects />
+
     </main>
   </VLayout>
 </template>
