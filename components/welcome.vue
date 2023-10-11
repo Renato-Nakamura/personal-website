@@ -19,12 +19,6 @@
         <div
           class="bg-white dark:!bg-gray-900 px-5 py-10 lg:py-14 lg:px-10 shadow-2xl"
         >
-          <!-- <div
-            data-aos="flip-up"
-            data-aos-delay="600"
-            data-aos-duration="700"
-            class="bg-purple-400 dark:bg-purple-300 shadow-purple-300/60 shadow-lg w-8 h-1.5 lg:w-10 lg:h-2 ml-0.5 mb-6"
-          /> -->
           <div class="flex justify-between flex-col-reverse md:flex-row">
             <div class="my-auto">
               <h1

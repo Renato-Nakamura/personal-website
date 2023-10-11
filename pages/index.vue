@@ -6,6 +6,7 @@
     <main class="d-flex flex-column w-100">
       <Welcome />
       <About />
+      <Experience />
     </main>
   </VLayout>
 </template>
