@@ -1,62 +1,39 @@
 <template>
-  <section
-    class="overflow-hidden bg-gray-100 relative bg-gradient-to-b dark:from-gray-900 dark:to-gray-800 h-screen h-100 d-flex flex-column pt-40"
-  >
-    <div
-      data-aos="slide-down"
-      data-aos-offset="200"
-      class=" lg:block shadow-xl absolute left-1/2 top-0 w-4 h-12 bg-gray-400 dark:bg-gray-300"
-    />
-    <!-- <div
-      ref="textReveal"
-      class=" lg:block shadow-xl absolute left-1/2 top-24 w-1/4 h-4 bg-gray-400 dark:bg-gray-300"
-    /> -->
-    <div
-      ref="textReveal2"
-      class=" lg:block shadow-xl absolute right-1/2 top-8 w-[45%] h-4 bg-gray-400 dark:bg-gray-300"
-    />
-    <div
-      data-aos="slide-down"
-      data-aos-offset="200"
-      class=" lg:block shadow-xl absolute left-[5%] top-8 w-4 h-full bg-gray-400 dark:bg-gray-300"
-    />
+    <section id="web-development"
+        class="relative overflow-hidden snap-center bg-gray-100 bg-gradient-to-b dark:from-gray-900 dark:to-gray-800">
+        <NewSection />
 
-    <article class="d-flex flex-column justify-space-around pl-16 md:!pl-44">
-      <div
-      data-aos="fade-right"
-      data-aos-offset="300"
-      class=" lg:block shadow-xl absolute left-[5%] top-1/4 w-1/12 h-2 bg-gray-400 dark:bg-gray-300"
-    />
-      <h2
-          class="basis-1/2 inline-block text-left tracking-wide text-4xl md:text-5xl lg:text-7xl font-black text-gray-700 dark:text-gray-200 mb-4"
-        >
-          <TextReveal text="EXPERIENCE">
-              DEV.
-          </TextReveal>
-        </h2>
-    </article>
+        <section class="main max-w-7xl pb-40 pt-32 mx-auto">
+            <div class="space-y-40" v-for="project in projects">
+                {{ project.name }}
+                <WebDevProject :project="project" right={index % 2} />
+            </div>
 
-  </section>
+            <button @click="() => (expanded = !expanded)"
+                class="mt-40 w-full flex items-center gap-2 group font-semibold text-gray-700 dark:text-gray-100"
+                >
+                <hr class="flex-1 mr-2 border-gray-400 dark:border-gray-500" />
+                <div v-if="expanded">
+                    <i class="fas fa-angle-up" />
+                    <span class="group-hover:underline">Less Projects</span>
+                </div>
+                <div v-else>
+                    <i class="fas fa-angle-down" />
+                    <span class="group-hover:underline">More Projects</span>
+                </div>
+                <hr class="flex-1 ml-2 border-gray-400 dark:border-gray-500" />
+            </button>
+        </section>
+
+        <div data-aos="slide-up" data-aos-offset="200"
+            class="hidden lg:block absolute shadow-xl right-14 bottom-0 w-4 h-28 bg-gray-400 dark:bg-gray-300" />
+    </section>
 </template>
 
 <script setup>
-let textReveal;
-let textReveal2;
-let once = false;
-onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry, i) => {
-        if (once) {
-          if (entry.isIntersecting) entry.target.classList.add("slide");
-        } else entry.target.classList.toggle("slide", entry.isIntersecting);
-      });
-    },
-    {
-      threshold: 1,
-    }
-  );
-  // observer.observe(textReveal);
-  observer.observe(textReveal2);
-});
+let expanded = ref(false)
+
+let projects = [
+    
+]
 </script>
