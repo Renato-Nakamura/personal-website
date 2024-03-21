@@ -3,8 +3,8 @@
         <aside class="mx-auto relative z-10 max-h-80 w-fit">
             <div
                 class="relative z-10 max-h-80 w-fit mx-3.5 shadow-lg bg-gradient-to-br from-purple-400 to-red-300 shadow-3xl overflow-hidden">
-                <video v-if="props.project.video" autoplay loop muted controls playsinline src={props.project.video}
-                    class="max-h-[inherit] w-auto p-2 sm:p-3 cursor-pointer img-container" />
+                <!--video v-if="props.project.video" autoplay loop muted controls playsinline src={props.project.video}
+                    class="max-h-[inherit] w-auto p-2 sm:p-3 cursor-pointer img-container" /-->
                 <img v-else loading="lazy" src={props.project.image}
                     class="max-h-[inherit] w-auto p-2 sm:p-3 cursor-pointer img-container"
                     :alt="'Screenshot of ' + props.project.name" />
